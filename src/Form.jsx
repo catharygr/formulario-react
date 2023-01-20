@@ -6,11 +6,12 @@ function Form() {
   const [formData, setFormData] = React.useState(
     {
           nombre: '',
-          apellido: '',
+          apellidos: '',
           email: '',
           comentarios: '',
           esAmigo: true,
-          empleo: ''
+          empleo: '',
+          colorFav: ''
     })
   console.log(formData)
 
@@ -19,7 +20,6 @@ function Form() {
     setFormData(preFormData => ({
       ...preFormData, 
       [name]: type === 'checkbox' ? checked :  value
-
     }))
 
   }
@@ -34,9 +34,9 @@ function Form() {
       />
            <input 
           type="text" 
-          placeholder='Apellido'
+          placeholder='Apellidos'
           onChange={manejarCambio}
-          name='apellido'
+          name='apellidos'
           value={formData.apellido}
       />
           <input 
@@ -70,8 +70,9 @@ function Form() {
                     type="radio"
                     id="desempleados"
                     name='empleo'
-                    value={desempleados}
+                    value='desempleados'
                     checked={formData.empleo === 'desempleados'}
+                    onChange={manejarCambio}
                 />
                 <label htmlFor="desempleados">Desempleados</label>
                 <br />
@@ -80,8 +81,9 @@ function Form() {
                     type="radio"
                     id="tiempo-parcial"
                     name='empleo'
-                    value={tiempo-parcial}
+                    value='tiempo-parcial'
                     checked={formData.empleo === 'tiempo-parcial'}
+                    onChange={manejarCambio}
                 />
                 <label htmlFor="tiempo-parcial">Tiempo parcial</label>
                 <br />
@@ -90,13 +92,26 @@ function Form() {
                     type="radio"
                     id="tiempo-completo"
                     name='empleo'
-                    value={tiempo-completo}
+                    value='tiempo-completo'
                     checked={formData.empleo === 'tiempo-completo'}
+                    onChange={manejarCambio}
                 />
                 <label htmlFor="tiempo-completo">Tiempo-completo</label>
                 <br />
-                
             </fieldset>
+            <br />
+            
+            <label htmlFor="favColor">¿Cuál es tu color favorito?</label>
+            <br />
+            <select id="colorFav">
+                <option value="red">Rojo</option>
+                <option value="orange">Anaranjado</option>
+                <option value="yellow">Amarillo</option>
+                <option value="green">Verde</option>
+                <option value="blue">Azul</option>
+                <option value="indigo">Indigo</option>
+                <option value="violet">Violeta</option>
+            </select>
 
     </form>
   )
